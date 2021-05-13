@@ -1,15 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react'
+import { database } from '../lib/supabase'
 import { Project } from './Project'
 import { Context } from "../lib/useContext";
 import { useAuth } from "../lib/useAuth";
-import useSWR from 'swr';
-import { supabaseUrl, supabaseKey } from "../lib/supabase"
-import { createClient } from "@supabase/supabase-js";
 
-export const database = createClient(
- supabaseUrl,
- supabaseKey
-)
 
 
 export default function Feed() {

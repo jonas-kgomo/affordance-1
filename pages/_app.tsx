@@ -1,7 +1,7 @@
 import { AppProps } from "next/app";
 import React from "react";
 import { SupabaseContextProvider } from "use-supabase";
-import { database } from "../lib/supabase";
+//import { database } from "../lib/supabase";
 import "../styles/globals.css";
 import { Context } from "../lib/useContext";
 import { useState } from "react";
