@@ -9,18 +9,11 @@ import useSWR from 'swr';
 import Link from "next/link";
 import Feed from './Feed';
 
-const fetcher = (url) =>
-  fetch(url, {
-    method: 'GET',
-    headers: new Headers({ 'Content-Type': 'application/json' }),
-    credentials: 'same-origin',
-  }).then((res) => res.json());
 
 export default function Explore() {
   
   const { user } = useAuth();
-  const { data, error } = useSWR(user ? '/api/getUser' : null, fetcher);
-  
+ 
   if (!user) {
     return (
       <>
