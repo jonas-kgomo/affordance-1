@@ -20,7 +20,7 @@ export default function Apply() {
 
   const addTodo = async (taskText: string) => {
     let task = taskText.trim()
-    if (task.length) {
+    if (task?.length) {
       let { data: todo, error } = await supabase.database
         .from('projects')
         .insert({ task, user_id: user.id })
