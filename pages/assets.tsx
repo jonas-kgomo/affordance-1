@@ -46,11 +46,11 @@ export default function Assets() {
   const full = fullConfig.theme.colors;
   const [copySuccess, setCopySuccess] = useState("");
   // get ref for svgs
-  const ref = React.useRef(null);
+//  const ref = React.useRef(null);
   //const myRef = React.createRef();
 
   const myRef = React.useRef([]);
-  // const refx = [ref,ref[1], ref[2], ref[3], ref[4]]
+  
   const svgList = [
     {
       id: 0,

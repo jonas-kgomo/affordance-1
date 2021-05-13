@@ -5,8 +5,11 @@ import { Input, InputField } from "../components/Input";
 import { Layout } from "../components/Layout";
 import Link from "next/link"; 
 import { Context } from "../lib/useContext";
-import { supabaseClient } from "../lib/supabase";
+import { database } from "../lib/supabase";
 import { useAuth } from "../lib/useAuth";
+
+
+
 
 export default function Apply() {
   const { user } = useAuth();
@@ -17,8 +20,8 @@ export default function Apply() {
 
   const addTodo = async (taskText: string) => {
     let task = taskText.trim()
-    if (task.length) {
-      let { data: todo, error } = await supabaseClient
+    if (task?.length) {
+      let { data: todo, error } = await database
         .from('projects')
         .insert({ task, user_id: user.id })
         .single()

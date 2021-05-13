@@ -1,4 +1,4 @@
-import { supabaseClient } from '../lib/supabase'
+import { database } from '../lib/supabase'
 import React, { useState, useEffect } from 'react'
 
 interface ProjectProps {
@@ -32,7 +32,7 @@ export const Project: React.FC<ProjectProps> = ({  todo, onDelete  }) => {
   };
   const toggle = async () => {
     try {
-      const { data, error } = await supabaseClient
+      const { data, error } = await database
         .from('projects')
         .update({ is_complete: !isCompleted })
         .eq('id', todo.id)
