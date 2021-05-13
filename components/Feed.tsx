@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { database } from '../lib/supabase'
+import { supabase } from '../lib/supabase'
 import { Project } from './Project'
 import { Context } from "../lib/useContext";
 import { useAuth } from "../lib/useAuth";
@@ -21,7 +21,7 @@ export default function Feed() {
 
   const fetchTodos = async () => {
 //    let { data: todos, error } = await supabase.from('todos').select('*').order('id', true)
-    let { data: todos, error } = await database.from('projects').select('*').order('id', { ascending: true }) 
+    let { data: todos, error } = await supabase.database.from('projects').select('*').order('id', { ascending: true }) 
     
     if (error) console.log('error', error)
     else setTodos(todos)
@@ -30,7 +30,7 @@ export default function Feed() {
 
   const deleteTodo = async (id: any) => {
     try {
-      await database.from('projects').delete().eq('id', id)
+      await supabase.database.from('projects').delete().eq('id', id)
       setTodos(todos.filter((x) => x.id != id))
     } catch (error) {
       console.log('error', error)

@@ -1,11 +1,11 @@
 import { GoTrueClient } from '@supabase/gotrue-js';
-//import { createClient } from "@supabase/supabase-js";
+import { createClient } from "@supabase/supabase-js";
 
 
-export const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
-export const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 
-//export const database = createClient(supabaseUrl, supabaseKey)
+const database = createClient(supabaseUrl, supabaseKey)
 
 
 const auth = new GoTrueClient({
@@ -17,4 +17,4 @@ const auth = new GoTrueClient({
   // cookieOptions: { path: '/', name: 'meowncookie',  }, // Optional
 })
 
-export const supabase = { auth }
+export const supabase = { auth, database };
