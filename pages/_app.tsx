@@ -5,6 +5,7 @@ import { supabaseClient } from "../lib/supabase";
 import "../styles/globals.css";
 import { Context } from "../lib/useContext";
 import { useState } from "react";
+import { supabase } from "../lib/supabase"
 
 
 function MyApp({ Component, pageProps }: AppProps) {
