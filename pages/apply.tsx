@@ -11,7 +11,7 @@ import { useAuth } from "../lib/useAuth";
 export default function Apply() {
   const { user } = useAuth();
   const [newTaskText, setNewTaskText] = useState('')
-  const {value, setValue} =  useContext(Context);
+//  const {value, setValue} =  useContext(Context);
   const [todos, setTodos] = useState([]);
   const [errorText, setError] = useState('')
 

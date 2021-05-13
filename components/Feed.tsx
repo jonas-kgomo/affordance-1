@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { supabaseClient } from '../lib/supabase'
-import { Button } from './Button'
-import { Input } from './Input'
 import { Project } from './Project'
 import { Context } from "../lib/useContext";
 import { useAuth } from "../lib/useAuth";
@@ -39,7 +37,7 @@ export default function Feed() {
   }
 
   return (
-    <div className="w-full " >
+    <div className="w-full" >
       
      <div className="overflow-hidden" >
         <div className="grid sm:grid-cols-2 grid-col-1 gap-4 justify-center  my-5">
