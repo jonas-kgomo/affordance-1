@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { supabase } from '../lib/supabase'
-import { Project } from './Project'
+import { supabase } from '../lib/supabase';
+import { Project } from './Project';
 import { Context } from "../lib/useContext";
 import { useAuth } from "../lib/useAuth";
 
