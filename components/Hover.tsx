@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { Button } from "./Button";
 
 interface HoverProps
@@ -10,19 +10,47 @@ interface HoverProps
 }
 
 export const Hover: React.FC<HoverProps> = ({ children }) => {
+  const [isActive, setActive] = React.useState(false);
+
+  const dropdownRef = useRef(null);
+
+  const dropDown = () => setActive(!isActive);
+  // close when clicking outside
+  useEffect(() => {
+    const pageClickEvent = (e) => {
+      // If the active element exists and is clicked outside of
+      if (
+        dropdownRef.current !== null &&
+        !dropdownRef.current.contains(e.target)
+      ) {
+        setActive(!isActive);
+      }
+    };
+
+    // If the item is active (ie open) then listen for clicks
+    if (isActive) {
+      window.addEventListener("click", pageClickEvent);
+    }
+
+    return () => {
+      window.removeEventListener("click", pageClickEvent);
+    };
+  }, [isActive]);
+
   return (
     <div className="relative  inline-block text-left">
-      <div>{children}</div>
-      {/*  Dropdown menu, show/hide based on menu state.
-opacity-0 invisible dropdown-menu transition-all duration-300 transform origin-top-right -translate-y-2 scale-95
-    Entering: "transition ease-out duration-100"
-      From: "transform opacity-0 scale-95"
-      To: "transform opacity-100 scale-100"
-    Leaving: "transition ease-in duration-75"
-      From: "transform opacity-100 scale-100"
-      To: "transform opacity-0 scale-95"
-       */}
-      <div className="absolute right-0 md:order-top-left transform shadow-sm  w-52 mt-2 origin-top-right  border border-lightGray rounded-lg bg-white text-darkGray focus:outline-none">
+      <div onClick={dropDown}>{children}</div>
+
+      <div
+        ref={dropdownRef}
+        className={`absolute origin-top-left right-0  transform shadow-sm  w-52 mt-2   border border-lightGray rounded-lg bg-white text-darkGray focus:outline-none 
+         
+         ${
+           isActive
+             ? "visible transition ease-out duration-100"
+             : "invisible ransition ease-in duration-75 -translate-y-2"
+         }`}
+      >
         <div className="py-1 text-overflow mx-auto w-full text-left  text-darkgray">
           {/* Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" */}
           <a
