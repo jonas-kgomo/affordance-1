@@ -12,6 +12,8 @@ module.exports = {
       transparent: "transparent",
     },
   },
-  variants: {},
+  variants: { 
+    display: ['responsive', 'group-hover', 'group-focus']
+  },
   plugins: [],
 };
