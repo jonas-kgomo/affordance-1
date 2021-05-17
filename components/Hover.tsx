@@ -16,19 +16,6 @@ export interface dropItem {
   item?: [];
 }
 
-export const Hex = () => {
-  return (
-    <div>
-      <Button
-        type="submit"
-        className="hover:bg-snow hover:border-darkGray text-gray block w-full text-left px-4 py-2 "
-      >
-        Sign out
-      </Button>
-    </div>
-  );
-};
-
 export const Hover: React.FC<HoverProps> = ({
   children,
   dropItems,
@@ -78,13 +65,7 @@ export const Hover: React.FC<HoverProps> = ({
          }`}
       >
         <div className="py-1 text-overflow mx-auto w-full text-left  text-darkgray">
-          {/* Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" */}
-
-          {/* <HoverItem urlItem={dropItems}> {dropList}</HoverItem> */}
-
-          {/* <DropHoverItem dropItems={["sd"]}></DropHoverItem> */}
           <div>{dropList}</div>
-
           <div>{exitButton}</div>
         </div>
       </div>
